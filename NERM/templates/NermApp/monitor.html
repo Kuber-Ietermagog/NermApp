@@ -1,0 +1,61 @@
+
+<!DOCTYPE html>
+{% extends "NermApp/base.html" %}
+  {% load staticfiles %}
+  {% block body_block %}
+  <h4 id="registers">...</h4>
+  <div id="diContainer" class="panel panel-default">
+    <div id="diHeader" class="panel-heading">DIGITAL INPUTS</div>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="panel-body">
+            <div id="moduleOne" class="panel panel-default">
+              <div id="moduleOneHeader" class="panel-heading">TRIPS</div>
+              <div class="panel-body">
+                <div class="ioField"><img class="leds" id="input_0" src="static/images/red_off.png" alt=""><span id="i_lbl_0" class="ioLabel">Input 0</span></div>
+                <div class="ioField"><img class="leds" id="input_1" src="static/images/red_off.png" alt=""><span id="i_lbl_1" class="ioLabel">Input 1</span></div>
+                <div class="ioField"><img class="leds" id="input_2" src="static/images/red_off.png" alt=""><span id="i_lbl_2" class="ioLabel">Input 2</span></div>
+                <div class="ioField"><img class="leds" id="input_3" src="static/images/red_off.png" alt=""><span id="i_lbl_3" class="ioLabel">Input 3</span></div>
+                <div class="ioField"><img class="leds" id="input_4" src="static/images/red_off.png" alt=""><span id="i_lbl_4" class="ioLabel">Input 4</span></div>
+                <div class="ioField"><img class="leds" id="input_5" src="static/images/red_off.png" alt=""><span id="i_lbl_5" class="ioLabel">Input 5</span></div>
+                <div class="ioField"><img class="leds" id="input_6" src="static/images/red_off.png" alt=""><span id="i_lbl_6" class="ioLabel">Input 6</span></div>
+                <div class="ioField"><img class="leds" id="input_7" src="static/images/red_off.png" alt=""><span id="i_lbl_7" class="ioLabel">Input 7</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="panel-body">
+            <div id="moduleTwo" class="panel panel-default">
+              <div id="moduleTwoHeader" class="panel-heading">ALARMS</div>
+              <div class="panel-body">
+                <div class="ioField"><img class="leds" id="input_8" src="static/images/red_off.png" alt=""><span id="i_lbl_8" class="ioLabel">Input 8</span></div>
+                <div class="ioField"><img class="leds" id="input_9" src="static/images/red_off.png" alt=""><span id="i_lbl_9" class="ioLabel">Input 9</span></div>
+                <div class="ioField"><img class="leds" id="input_10" src="static/images/red_off.png" alt=""><span id="i_lbl_10" class="ioLabel">Input 10</span></div>
+                <div class="ioField"><img class="leds" id="input_11" src="static/images/red_off.png" alt=""><span id="i_lbl_11" class="ioLabel">Input 11</span></div>
+                <div class="ioField"><img class="leds" id="input_12" src="static/images/red_off.png" alt=""><span id="i_lbl_12" class="ioLabel">Input 12</span></div>
+                <div class="ioField"><img class="leds" id="input_13" src="static/images/red_off.png" alt=""><span id="i_lbl_13" class="ioLabel">Input 13</span></div>
+                <div class="ioField"><img class="leds" id="input_14" src="static/images/red_off.png" alt=""><span id="i_lbl_14" class="ioLabel">Input 14</span></div>
+                <div class="ioField"><img class="leds" id="input_15" src="static/images/red_off.png" alt=""><span id="i_lbl_15" class="ioLabel">Input 15</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="aiContainer" class="panel panel-default">
+    <div id="aiHeader" class="panel-heading">Analog Inputs</div>
+    <div class="panel-body">
+      <canvas id="Volt_0" data-type="radial-gauge" data-width="250" data-height="250"></canvas>
+      <canvas id="Volt_1" data-type="radial-gauge" data-width="250" data-height="250"></canvas>
+      <canvas id="Volt_2" data-type="radial-gauge" data-width="250" data-height="250"></canvas>
+      <canvas id="Volt_3" data-type="radial-gauge" data-width="250" data-height="250"></canvas>
+    </div>
+  </div>
+  <!-- <script src="/static/JS/gauge.min.js"></script>
+  <script src="/static/JS/ioupdates.js"></script> -->
+  <script src="{% static "JS/gauge.min.js" %}"></script>
+  <script src="{% static "JS/ioupdates.js" %}"></script>
+  {% endblock %}

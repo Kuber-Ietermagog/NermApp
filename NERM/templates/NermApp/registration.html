@@ -1,0 +1,25 @@
+{% extends 'NermApp/base.html' %}
+{% load staticfiles %}
+
+{% block body_block %}
+<script type="text/javascript">
+  $("#registerMenu").css("background-color", "rgba(48, 150, 150, .95)");
+</script>
+
+<div class="jumborton">
+  {% if registered %}
+    <h1>Thank you, user is registered!</h1>
+  {% else %}
+    <h1>Register user here!</h1>
+    <h3>Fill out the form:</h3>
+
+    <form enctype="multipart/form-data" method="post">
+      {% csrf_token %}
+      {{ user_form.as_p }}
+      <input type="submit" name="" value="Register">
+    </form>
+
+  {% endif %}
+</div>
+
+{% endblock %}

@@ -1,0 +1,11 @@
+#!/bin/bash
+
+chkd=`ps -ef | grep "manage.py runserver" | grep -v grep | awk '{print $2}'`
+if [[ $chkd != '' ]]
+then
+  echo 'Stopping Server at: PID ='$chkd
+  ps -ef | grep "manage.py runserver" | grep -v grep | awk '{print $2}' | xargs kill
+elif [[ $chkd == '' ]]
+then
+  echo 'Server already stopped.'
+fi

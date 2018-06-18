@@ -1,0 +1,25 @@
+#!/bin/bash
+raspi=`uname -a | grep "raspberrypi" | awk '{print $2}'`
+if [[ $raspi = 'raspberrypi' ]]
+then
+  echo 'This is a raspberry pi'
+  ps -ef | grep "plymouthd" | grep -v grep | awk '{print $2}' | xargs kill
+  ps -ef | grep "systemd-journal" | grep -v grep | awk '{print $2}' | xargs kill
+elif [[ $raspi != 'raspberrypi' ]]
+then
+  echo 'This is not a raspberry pi!'
+fi
+while [[ True ]]; do
+  my_ip=`ifconfig eth0 | grep "inet" | grep -v "inet6" | awk '{print $2}'`
+  if [[ $my_ip != '' ]]; then
+    echo "Starting Server"
+    /home/pi/miniconda3/envs/DjangoEnv/bin/python /home/pi/NERM/manage.py runserver $my_ip:8080 --insecure
+  elif [[ $my_ip == '' ]]; then
+    chkd=`ps -ef | grep "manage.py runserver" | grep -v grep | awk '{print $2}'`
+    if [[ $chkd != '' ]]
+    then
+      echo 'Stopping Server at: PID ='$chkd
+      ps -ef | grep "manage.py runserver" | grep -v grep | awk '{print $2}' | xargs kill
+    fi
+  fi
+done

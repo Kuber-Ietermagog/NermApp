@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static "CSS/bootstrap.min.css" %}">
+    <link rel="stylesheet" href="{% static "CSS/mystyle.css" %}">
+    <script src="{% static "JS/jquery-3.3.1.js" %}"></script>
+    <script src="{% static "JS/bootstrap.min.js" %}"></script>
+    <title>NERM APP</title>
+  </head>
+  <body id="myBody" onload="LoadLables()" >
+  <nav id="topnav" class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a id="leftMenuItems" class="navbar-brand" href="{% url 'monitor' %}">WEBHMI</a>
+      </div>
+      <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav">
+          <li id="monitorMenu"><a id="leftMenuItems" href="{% url 'monitor' %}">MONITORING</a></li>
+          <li id="eventsMenu"><a id="leftMenuItems" href="{% url 'NermApp:events' %}">EVENT LOG</a></li>
+          {% if perms.auth.can_set_ip %}
+          <li id="changeIP"><a id="leftMenuItems" href="{% url 'NermApp:changeIp' %}">CHANGEIP</a></li>
+          {% endif %}
+          {% if perms.auth.can_set_jobinfo %}
+          <li id="jobMenu"><a id="leftMenuItems" href="{% url 'NermApp:jobInfo' %}">JOB-INFO</a></li>
+          {% endif %}
+          {% if perms.auth.can_set_analog %}
+          <li id="analogMenu"><a id="leftMenuItems" href="{% url 'NermApp:analogSet' %}">ANALOG</a></li>
+          {% endif %}
+          {% if perms.auth.can_set_digital%}
+          <li id="digitalMenu"><a id="leftMenuItems" href="{% url 'NermApp:digitalSet' %}">DIGITAL</a></li>
+          {% endif %}
+          {% if perms.auth.can_register_user %}
+          <li id="registerMenu"><a id="leftMenuItems" href="{% url 'NermApp:register' %}">REGISTER USER</a></li>
+          {% endif %}
+          <!-- <li><a class="" href="{% url 'admin:index' %}">ADMIN</a></li> -->
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          {% if user.is_authenticated %}
+          <li><a id="leftMenuItems" href="{% url 'logout' %}">LOGOUT:</a></li>
+          <li><a id="userID">{{ user }}</a>
+          {% else %}
+            <li><a id="leftMenuItems" href="{% url 'NermApp:login' %}">LOGIN</a></li>
+          {% endif %}
+          <li><a id="timeDate">Loading time...</a></li>
+        </ul>
+      </div>
+    </div>
+</nav>
+    <div class="container" style="margin-top:60px">
+      {% block body_block %}
+      <!-- Anything ouside of this will be inherited if you extend -->
+      {% endblock %}
+    </div>
+    <script src="{% static "JS/sitetime.js" %}"></script>
+  </body>
+</html>

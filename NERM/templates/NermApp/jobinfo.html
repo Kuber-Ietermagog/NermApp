@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+{% extends "NermApp/base.html" %}
+  {% block body_block %}
+  <script type="text/javascript">
+    $("#jobMenu").css("background-color", "rgba(48, 150, 150, .95)");
+  </script>
+  <div id="diContainer" class="panel panel-default">
+    <div id="diHeader" class="panel-heading">JOB INFORMATION</div>
+      <div class="container-fluid">
+        <form method="POST">
+            <div class="panel-body">
+              <div id="moduleOne" class="panel panel-default">
+                <div id="moduleOneHeader" class="panel-heading">JOB DETAILS</div>
+                <div class="panel-body">
+                  {{jobInfo.as_p}}
+                </div>
+              </div>
+            </div>
+          {% csrf_token %}
+          <input id="saveButton" type="submit" class="btn btn-primary" name="" value="SAVE">
+        </form>
+      </div>
+  </div>
+  {% endblock %}

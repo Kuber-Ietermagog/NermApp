@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+{% extends "NermApp/base.html" %}
+  {% block body_block %}
+  <script type="text/javascript">
+    $("#analogMenu").css("background-color", "rgba(48, 150, 150, .95)");
+  </script>
+  <div id="diContainer" class="panel panel-default">
+    <div id="moduleTwoHeader" class="panel-heading">ANALOG PARAMETERS</div>
+      <div class="container-fluid">
+        <form method="POST">
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="panel-body">
+                <div id="moduleOne" class="panel panel-default">
+                  <div id="moduleOneHeader" class="panel-heading">GAUGE 1</div>
+                  <div class="panel-body">
+                    {{settings1.as_p}}
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="panel-body">
+                <div id="moduleTwo" class="panel panel-default">
+                  <div id="moduleTwoHeader" class="panel-heading">GAUGE 2</div>
+                  <div class="panel-body">
+                    <h3 id="qtySet">Qty Set in Gauge 1</h3>
+                    {{settings2.as_p}}
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="panel-body">
+                <div id="moduleThree" class="panel panel-default">
+                  <div id="moduleThreeHeader" class="panel-heading">GAUGE 3</div>
+                  <div class="panel-body">
+                    <h3 id="qtySet">Qty Set in Gauge 1</h3>
+                    {{settings3.as_p}}
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="panel-body">
+                <div id="moduleFour" class="panel panel-default">
+                  <div id="moduleFourHeader" class="panel-heading">GAUGE 4</div>
+                  <div class="panel-body">
+                    <h3 id="qtySet">Qty Set in Gauge 1</h3>
+                    {{settings4.as_p}}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          {% csrf_token %}
+          <input id="saveButton" type="submit" class="btn btn-primary" name="" value="SAVE" href="{% url 'monitor' %}">
+        </form>
+      </div>
+  </div>
+  {% endblock %}

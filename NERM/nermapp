@@ -1,0 +1,17 @@
+server { 
+    listen 80; 
+    server_name 192.168.0.250; 
+    #location = /favicon.ico { access_log off; log_not_found off; } 
+    location /static/ {
+	autoindex on; 
+        root /home/pi/NERM; 
+    } 
+    location /json/ {
+	autoindex on;
+	root /home/pi/NERM/static;
+    }
+    location / { 
+        include proxy_params; 
+        proxy_pass http://unix:/home/pi/NERM/NERM.sock; 
+    } 
+}

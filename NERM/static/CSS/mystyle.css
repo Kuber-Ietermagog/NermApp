@@ -1,0 +1,214 @@
+#topnav{
+  color: white;
+  background-color: rgba(48, 48, 48, .95);
+}
+#leftMenuItems{
+  color: white;
+}
+
+
+#userID{
+  color: yellow;
+}
+
+#logging{
+  color: yellow;
+}
+
+#myNavbar{
+  color: white;
+}
+
+#timeDate{
+  color: white;
+}
+
+#registers{
+  text-align: center;
+}
+
+#diContainer{
+  background-color: rgba(20, 20, 20, .5);
+  font-size: 20px;
+}
+
+#diHeader{
+  background-color: rgba(48, 255, 2, .5);
+  color: white;
+  text-align: center;
+}
+
+.ioField{
+  margin: 5px;
+}
+
+.ioLabel{
+  position: absolute;
+  color: white;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 30px;
+  font-size: 16px;
+  margin-left: 10px;
+  border: 1px solid white;
+  border-radius: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.shrinkbox{
+  /* float: left; */
+  width: 50%;
+}
+
+#moduleOne{
+  background-color: rgba(200, 2, 2, .3)
+}
+
+#moduleOneHeader{
+  text-align: center;
+  color: white;
+  background-color: rgba(200, 2, 2, .5)
+}
+
+#moduleTwo{
+  background-color: rgba(200, 200, 2, .3)
+}
+
+#moduleTwoHeader{
+  text-align: center;
+  color: white;
+  background-color: rgba(200, 200, 2, .5)
+}
+
+#moduleThree{
+  background-color: rgba(2, 200, 2, .3)
+}
+
+#moduleThreeHeader{
+  text-align: center;
+  color: white;
+  background-color: rgba(2, 200, 2, .5)
+}
+
+#moduleFour{
+  background-color: rgba(2, 2, 200, .3)
+}
+
+#moduleFourHeader{
+  text-align: center;
+  color: white;
+  background-color: rgba(2, 2, 200, .5)
+}
+
+#aiContainer{
+  background-color: rgba(20, 20, 20, .5);
+  font-size: 20px;
+  text-align: center;// function showMenu() {
+//     var x = document.getElementById("myTopNav");
+//     if (x.className === "topnav") {
+//         x.className += " responsive";
+//     } else {
+//         x.className = "topnav";
+//     }
+// }
+  /* float: right; */
+}
+
+#aiHeader{
+  background-color: rgba(48, 255, 2, .5);
+  color: white;
+  text-align: center;
+}
+
+
+#myBody{
+  background-image: url("theFuture.png");
+  width: auto;
+  font-family: monospace;
+  color: white;
+}
+
+#tripPanel{
+  background-color: rgba(20, 20, 20, .5);
+  font-size: 20px;
+}
+
+#tripHeader{
+  background-color: rgba(255, 160, 4, .5);
+  color: white;
+  text-align: center;
+}
+
+
+
+.tripTbHd{
+  color: white;
+  background-color: gray;
+  text-align: center;
+}
+
+input{
+  color: black;
+}
+@media screen{
+  #printlogo{
+    display: none;
+  }
+  #printheader{
+    display: none;
+  }
+  #myTable{
+    text-align: center;
+    color: black;
+    background-color: white;
+    font-size: 14px;
+    border-width: medium;
+  }
+}
+@media print{
+  #printlogo{
+    display: block;
+  }
+  #printheader{
+    display: block;
+    text-align: center;
+  }
+  #myTable{
+    text-align: center;
+    color: black;
+    background-color: white;
+    font-size: 12px;
+    border-width: medium;
+  }
+}
+
+#digset{
+  margin: 10px;
+}
+
+.getlost{
+  display: none;
+}
+
+#qtySet{
+  font-size: 20px;
+
+}
+
+#saveButton{
+  margin-bottom: 10px;
+  margin-left: 25%;
+  width: 50%;
+  font-size: 20px;
+}
+
+.myTextArea{
+  color: black;
+  width: 95%;
+}
+
+#id_Clear_Events{
+  width: 25px;
+  height: 25px;
+}

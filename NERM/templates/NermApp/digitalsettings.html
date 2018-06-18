@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+{% extends "NermApp/base.html" %}
+  {% block body_block %}
+  <script type="text/javascript">
+    $("#digitalMenu").css("background-color", "rgba(48, 150, 150, .95)");
+  </script>
+  <div id="diContainer" class="panel panel-default">
+    <div id="diHeader" class="panel-heading">DIGITAL INPUTS</div>
+      <div class="container-fluid">
+        <form method="POST">
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="panel-body">
+                <div id="moduleOne" class="panel panel-default">
+                  <div id="moduleOneHeader" class="panel-heading">LABELS</div>
+                  <div class="panel-body">
+                    {{my_labels.as_p}}
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="panel-body">
+                <div id="moduleTwo" class="panel panel-default">
+                  <div id="moduleTwoHeader" class="panel-heading">ALARMS</div>
+                  <div class="panel-body">
+                    {{my_alarms.as_p}}
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="panel-body">
+                <div id="moduleFour" class="panel panel-default">
+                  <div id="moduleFourHeader" class="panel-heading">USED</div>
+                  <div class="panel-body">
+                    {{my_digitals.as_p}}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          {% csrf_token %}
+          <input id="saveButton" type="submit" class="btn btn-primary" name="" value="SAVE">
+        </form>
+      </div>
+  </div>
+  {% endblock %}

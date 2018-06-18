@@ -1,0 +1,28 @@
+#!/bin/sh -e
+#
+# rc.local
+#
+# This script is executed at the end of each multiuser runlevel.
+# Make sure that the script will "exit 0" on success or any other
+# value on error.
+#
+# In order to enable or disable this script just change the execution
+# bits.
+#
+# By default this script does nothing.
+
+# Print the IP address
+_IP=$(hostname -I) || true
+if [ "$_IP" ]; then
+  printf "My IP address is %s\n" "$_IP"
+fi
+
+#/home/pi/launcher.sh&
+#/home/pi/NERM/controlserver run 192.168.0.250 i2c #modbus 192.168.2.232
+#sleep 2s
+#echo "starting i2c bus server!"
+#/home/pi/NERM/autoserver&
+cd /home/pi/NERM
+sudo /home/pi/miniconda3/envs/DjangoEnv/bin/gunicorn --bind unix:/home/pi/NERM/NERM.sock NERM.wsgi:application&
+sudo python2 /home/pi/NERM/get_registers.py i2c
+exit 0

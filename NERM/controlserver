@@ -1,0 +1,71 @@
+#!/bin/bash
+
+if [[ $1 = 'run' ]]
+then
+  serverip=$2
+  busmode=$3
+  modbusip=$4
+  raspi=`uname -a | grep "raspberrypi" | awk '{print $2}'`
+  if [[ $raspi = 'raspberrypi' ]]
+  then
+    echo 'This is a raspberry pi'
+    ps -ef | grep "plymouthd" | grep -v grep | awk '{print $2}' | xargs kill
+    ps -ef | grep "systemd-journal" | grep -v grep | awk '{print $2}' | xargs kill
+  elif [[ $raspi != 'raspberrypi' ]]
+  then
+    echo 'This is not a raspberry pi!'
+  fi
+  chka=`ps -ef | grep "get_registers.py" | grep -v grep | awk '{print $2}'`
+  if [[ $chka = '' ]]
+  then
+    if [[ $busmode = 'modbus' ]]
+    then
+      echo 'Starting Control Server!'
+      echo 'Starting Modbus Client.'
+      python get_registers.py $3 $4&
+      echo 'Modbus Client Running.'
+      #/home/pi/miniconda3/envs/DjangoEnv/bin/python /home/pi/NERM/get_registers.py $3 $4&
+    elif [[ $busmode = 'i2c' ]]
+    then
+    echo 'Starting i2c-bus'
+    #/home/pi/miniconda3/envs/Python2Env/bin/python /home/pi/NERM/get_registers.py $3&
+    python2 /home/pi/NERM/get_registers.py $3&
+    echo 'I2C bus running'
+    fi
+  elif [[ $chka != '' ]]
+  then
+      echo 'Modbus Client runnig: PID = '$chka
+  fi
+  chkb=`ps -ef | grep "manage.py runserver" | grep -v grep | awk '{print $2}'`
+  if [[ $chkb = '' ]]
+  then
+    python manage.py runserver $2:8080
+    #/home/pi/miniconda3/envs/DjangoEnv/bin/python /home/pi/NERM/manage.py runserver $2:8080
+  elif [[ $chkb != '' ]]
+  then
+    echo 'Server runnig: PID = '$chkb
+  fi
+fi
+
+
+if [[ $1 = 'stop' ]]
+then
+  chkc=`ps -ef | grep "get_registers.py" | grep -v grep | awk '{print $2}'`
+  if [[ $chkc != '' ]]
+  then
+    echo 'Stopping Modbus Client at: PID='$chkc
+    ps -ef | grep "get_registers.py" | grep -v grep | awk '{print $2}' | xargs kill
+  elif [[ $chkc == '' ]]
+  then
+    echo 'Modbus Client already stopped.'
+  fi
+  chkd=`ps -ef | grep "manage.py runserver" | grep -v grep | awk '{print $2}'`
+  if [[ $chkd != '' ]]
+  then
+    echo 'Stopping Server at: PID ='$chkd
+    ps -ef | grep "manage.py runserver" | grep -v grep | awk '{print $2}' | xargs kill
+  elif [[ $chkd == '' ]]
+  then
+    echo 'Server already stopped.'
+  fi
+fi
